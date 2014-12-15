@@ -42,6 +42,22 @@ activity$time <- as.POSIXct(activity$time, format='%H:%M:%S')
 
 ## Imputing missing values
 
+Calculate the mean for each day.
+```{r}
+total.steps <- tapply(activity$steps, activity$date, sum, na.rm=TRUE)
+```
+
+Mean and mediam for each day:
+```{r}
+mean(total.steps)
+median(total.steps)
+```
+
+Histogram of distribution of total number of steps per day:
+```{r histogram}
+library(ggplot2)
+qplot(total.steps, xlab='Total steps', ylab='Frequency',type="1")
+```
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
